@@ -1,0 +1,37 @@
+1. npm install -g json-server
+2. create a folder for the json-server or server-api
+3. cd server-api
+4. npm init --yes  (creates the package.json file)
+5. npm i --save json-server
+6. create a file called "db.json" in the root directory
+
+    - this json file will contain the resource
+    - the url will follow the created object structure according to the declaration
+    - http://localhost:5000/contacts      ---   will return the whole object  
+    - http://localhost:5000/contacts/1    ---   will return the data from the object by the "id"
+    - other possibilities can be found    ---> https://github.com/typicode/json-server
+
+    --- EXAMPLE ---
+
+    {
+      "contacts" : [
+        {
+          "id": "1",
+          "name": "Pistike"
+        },
+        {
+          "id": "2",
+          "name": "Juliska"
+        }
+      ]
+    }
+
+7. in "package.json" change the "scripts" to 
+
+    -   start the server on port 5000   --->    -p 5000
+    -   watch the file "db.json"        --->    -w db.json
+    -   watch the file with "routes"    --->    --routes routes.json
+
+    "scripts": {
+      "start": "json-server -p 5000 -w db.json --routes routes.json"
+    },

@@ -1,0 +1,81 @@
+1. add, update, delete endpoints
+
+    #   to add, update, delete data we need to use "mutation" in the builder
+    #   the mutation won't return anything, because of that the type will be "void" 
+        and "Contact" is the type from the interface what we have created
+
+2. "add" endpoint
+
+        --------------------------------------------------------------------------------------------------
+        addContact: builder.mutation<void, Contact>
+        --------------------------------------------------------------------------------------------------
+    
+    #   "url" is the endpoint
+    #   "method" --->  "POST" is the current method of the request
+    #   "body" is the new data what we are going to send
+
+        --------------------------------------------------------------------------------------------------
+        addConatct: builder.mutation<void, Contact>({
+          query: contact => ({
+            url: '/contacts',
+            method: 'POST',
+            body: contact
+          })
+        })
+        --------------------------------------------------------------------------------------------------
+
+3. "update" endpoint
+
+        --------------------------------------------------------------------------------------------------
+        addContact: builder.mutation<void, Contact>
+        --------------------------------------------------------------------------------------------------
+    
+    #   "url" is the endpoint
+    #   "method" --->  "PUT" is the current method of the request
+    #   "body" --->   is the new data what we are going to send
+        we use the "rest" as we don't want to update the "id"
+
+    #   the "query" parameter accepts the id of the current object. 
+    #   This will use to identify the obejct which should be updated
+    #   "...rest" is the rest of the data in the object (excluded the id)
+
+        --------------------------------------------------------------------------------------------------
+        updateContact: builder.mutation<void, Contact>({
+          query: ({id, ...rest}) => ({
+            url: `/contacts/${id}`,
+            method: 'PUT',
+            body: rest
+          })
+        }),
+        --------------------------------------------------------------------------------------------------
+
+4. "delete" endpoint
+
+    #   the type in this case is "string" because we just pass the "id"
+
+        --------------------------------------------------------------------------------------------------
+        addContact: builder.mutation<void, string>
+        --------------------------------------------------------------------------------------------------
+    
+    #   "url" is the endpoint
+    #   "method" --->  "DELETE" is the current method of the request
+    #   "body" --->   in the delete method we don't send body
+
+    #   the "query" parameter accepts the id of the current object. 
+    #   This will use to identify the obejct which should be deleted
+
+        --------------------------------------------------------------------------------------------------
+        updateContact: builder.mutation<void, string>({
+          query: (id) => ({
+            url: `/contacts/${id}`,
+            method: 'DELETE'
+          })
+        }),
+        --------------------------------------------------------------------------------------------------
+
+5. To refresh the page with the new data we can use the "Automated Re-fetching"
+    
+    -   https://redux-toolkit.js.org/rtk-query/usage/automated-refetching
+
+    -   Providing tags are for fetching request
+    -   Invalidating tags are for "PUT", "POST", "DELETE"

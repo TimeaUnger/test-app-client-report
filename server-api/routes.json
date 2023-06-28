@@ -1,0 +1,10 @@
+{
+  "/api/*": "/$1",
+
+  "/clients/": "/clients",
+  "/clients/:id": "/clients/:id",
+  "/clients/?name=name": "/clients?name=:name",
+
+  "/reports/:id": "/reports/:id",
+  "/reports/:client_id": "/reports/:client_id"
+}

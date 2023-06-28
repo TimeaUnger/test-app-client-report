@@ -1,0 +1,19 @@
+.noResult {
+  width: 100%;
+  height: 300px;
+  margin-top:30px;
+  background-color: #fcfcfc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.noResultInner {
+  text-align: center;
+}
+
+.noResultTitle{
+  font-size: 21px;
+  padding: 10px;
+}

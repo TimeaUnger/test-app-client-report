@@ -1,0 +1,153 @@
+1. create the folder "services" inside "src" and add the api service "contactsApi.tsx"
+2. import  "createApi" , "fetchBaseQuery" from "@reduxjs/toolkit/query/react"
+
+        --------------------------------------------------------------------------------------------------
+        import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+        --------------------------------------------------------------------------------------------------
+
+3.  use the "createApi" method to create the
+4.  set the base url   ----    
+
+        --------------------------------------------------------------------------------------------------
+        baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/" })
+        --------------------------------------------------------------------------------------------------
+
+5.  create the endpoints what we can use to call the API
+        
+        #   to add, update, delete data we need to use "query" in the builder
+
+        --------------------------------------------------------------------------------------------------
+        contacts: builder.query
+        --------------------------------------------------------------------------------------------------
+
+6.  as we use typescrypt we need to specify the type
+
+    -   create folder "models"
+    -   create the relevant file "contacts.model.ts"
+    -   in the "contacts.model.ts" declare an interface
+    -   import the interface (we are fetching all the conatacts which will be an array)
+
+          contacts: builder.query<Contact[], void>({})
+
+            - Contact[] --- it's gonna return a conact array
+            - since this query will not pass any paramaters, arguments we need to add "void"
+
+7.  add the first endpoint --->   query: () => '/contacts'
+8.  export the created hook --->  
+
+        --------------------------------------------------------------------------------------------------
+        export const { useContactsQuery} = contactsApi;
+        --------------------------------------------------------------------------------------------------
+
+    the name of the hook should start "use" following the name of the endpoint
+    in this case "contacts" following "Query"
+    this hook is comming from the contactsApi
+
+9.  To use the Api we need to create a redux store (we have to bind the createApi in the redux store)
+10. Create the store
+
+    -   create a file in the root directory "store.tsx"
+    -   import { configureStore } from "@reduxjs/toolkit";
+    -   import  { contactsApi } from "./services/contactsApi";
+    -   configure the store
+
+        --------------------------------------------------------------------------------------------------
+        const store = configureStore({
+          reducer: {
+      
+          }
+        });
+        --------------------------------------------------------------------------------------------------
+
+    -   we need to add the reducerPath property to the "contactsApi", its value will be the "contactsApi"
+        with this we can use the reducer in our store
+
+        reducerPath: "contactsApi",
+
+    -   hook the contactsApi  ---   [contactsApi.reducerPath]: contactsApi.reducer
+
+        --------------------------------------------------------------------------------------------------
+        const store = configureStore({
+          reducer: {
+            [contactsApi.reducerPath]: contactsApi.reducer
+          }
+        });
+        --------------------------------------------------------------------------------------------------
+
+    -   add middleware to it
+
+        #   helps us caching the server data, or for validation, or pulling the data
+
+        #   in the middleware we have to use the "getDefaultMiddleware" (not any external middleware)
+        #   this is an arrow function
+        #   we need to do a concatination of the middleware which we are going to use for our contactsApi
+
+        --------------------------------------------------------------------------------------------------
+            middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(contactsApi.middleware)
+        --------------------------------------------------------------------------------------------------
+
+        #   This is how we bind our Api with the store
+
+11.   Add the store to the app
+
+        -   in the index.tsx import the Provider and the store
+        -   wrap the app with the Provider and store
+
+
+        --------------------------------------------------------------------------------------------------
+        import { Provider } from 'react-redux';
+        import {store} from './store';
+        --------------------------------------------------------------------------------------------------
+
+        root.render(
+          <React.StrictMode>
+            <Provider store={store}>
+              <App />
+            </Provider>
+
+          </React.StrictMode>
+        );
+
+        --------------------------------------------------------------------------------------------------
+
+12.   Use the store in the App
+
+      -   import the contactsApi
+
+        --------------------------------------------------------------------------------------------------
+        import { useContactsQuery } from './services/contactsApi';
+        --------------------------------------------------------------------------------------------------
+
+      -   use the conatactsQuery
+
+          it export some properties
+
+          1.  "data" what we are going to fetch from the server
+          2.  "error" state if we have any error
+          3.  "isLoading" state
+          4.  "isFetching" state
+          5.  "isSuccess" state (when the API request was successful)
+
+13.   Add another endpoint to fetch individual contact by id
+
+        # in this case the type will be "string"  ----  <Contact, string>
+          as in the query we use the "id" 
+
+        --------------------------------------------------------------------------------------------------
+        contact: builder.query<Contact, string>({})
+        --------------------------------------------------------------------------------------------------
+        query: (id) => `/contacts/${id}`
+        --------------------------------------------------------------------------------------------------
+
+        contact: builder.query<Contact, string>({
+          query: (id) => `/contacts/${id}`
+        })
+
+        --------------------------------------------------------------------------------------------------
+
+
+        # Export the new endpoint query "useContactQuery"
+        --------------------------------------------------------------------------------------------------
+        export const { useContactsQuery, useContactQuery} = contactsApi;
+        --------------------------------------------------------------------------------------------------
+        

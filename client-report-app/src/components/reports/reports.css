@@ -1,0 +1,45 @@
+.reportsRow {
+  padding: 10px 0;
+}
+
+.progressCircle {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-items: center;
+}
+
+.CircularProgressbar {
+  width: 80px;
+  height: 80px;
+}
+
+.reportDeleteBtn {
+  position: absolute;
+  right: 30px;
+  z-index: 1;
+}
+.reportDeleteBtn:hover{
+  cursor: pointer;
+}
+
+.clientReportMainBtn {
+  position: absolute;
+  right: 55px;
+  z-index: 1;
+}
+.clientReportMainBtn:hover{
+  cursor: pointer;
+}
+
+.MuiAccordionSummary-content{
+  align-items: center;
+}
+
+.addReportBtn {
+  margin-bottom: 10px;
+}
+
+.clientsRowWrapper{
+  background-color: #ededed;
+  padding: 0px 15px;
+}

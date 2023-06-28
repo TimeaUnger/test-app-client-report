@@ -1,0 +1,53 @@
+.headerWrapper {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-bottom: 25px;
+}
+
+.search {
+  position: relative;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.search {
+  display: inline-block;
+}
+
+.search input {
+  width: 250px;
+  height: 32px;
+
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+}
+
+.search input {
+  text-indent: 32px;
+}
+
+.search .fa-search {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.search .fa-search {
+  left: auto;
+  right: 10px;
+}
+
+.searchWrapper {
+  text-align: right;
+  margin:5px;
+}
+
+.btnWrapper {
+  padding-top: 4px;
+}

@@ -1,0 +1,109 @@
+{
+  "clients": [
+    {
+      "id": "1",
+      "name": "xxx"
+    },
+    {
+      "id": "2",
+      "name": "Bendeguz"
+    },
+    {
+      "id": "943",
+      "name": "Candie"
+    }
+  ],
+  "reports": [
+    {
+      "id": "773",
+      "client_id": "1",
+      "report1": "0",
+      "report2": "0",
+      "report3": "0"
+    },
+    {
+      "id": "282",
+      "client_id": "1",
+      "report1": "0",
+      "report2": "0",
+      "report3": "0"
+    },
+    {
+      "id": "948",
+      "client_id": "1",
+      "report1": "0",
+      "report2": "0",
+      "report3": "0"
+    },
+    {
+      "id": "173",
+      "client_id": "143",
+      "report1": "0",
+      "report2": "0",
+      "report3": "0"
+    },
+    {
+      "id": "534",
+      "client_id": "143",
+      "report1": "0",
+      "report2": "0",
+      "report3": "0"
+    },
+    {
+      "client_id": "943",
+      "report1": "69",
+      "report2": "69",
+      "report3": "69",
+      "id": "710"
+    },
+    {
+      "client_id": "2",
+      "report1": "21",
+      "report2": "21",
+      "report3": "21",
+      "id": "129"
+    },
+    {
+      "client_id": "2",
+      "report1": "96",
+      "report2": "96",
+      "report3": "96",
+      "id": "893"
+    },
+    {
+      "client_id": "2",
+      "report1": "50",
+      "report2": "50",
+      "report3": "50",
+      "id": "446"
+    },
+    {
+      "id": "398",
+      "client_id": "1",
+      "report1": "0",
+      "report2": "0",
+      "report3": "0"
+    },
+    {
+      "id": "717",
+      "client_id": "1",
+      "report1": "0",
+      "report2": "0",
+      "report3": "0"
+    },
+    {
+      "id": "711",
+      "client_id": "2",
+      "report1": "0",
+      "report2": "0",
+      "report3": "0"
+    },
+    {
+      "id": "260",
+      "client_id": "2",
+      "report1": "0",
+      "report2": "0",
+      "report3": "0"
+    }
+  ]
+}
